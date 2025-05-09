@@ -43,23 +43,25 @@ def check_lists(list_to_compare1, list_to_compare2):
  # Remove this line and implement
 
 
-def list_of_lists(list_of_lists_to_modify):
-    list_one = list_of_lists_to_modify[0]
-    list_two = list_of_lists_to_modify[1]
-    list_three = list_of_lists_to_modify[2]
+def list_of_lists(lists):
+    result = []
 
-    if len(list_one) > 2:
-        list_one_new = [list_one[0], list_one[1]]
+    # Primera sublista: primeros dos elementos
+    if len(lists[0]) >= 2:
+        result.append(lists[0][:2])
     else:
-        list_one_new = list_one
+        result.append(lists[0])  # Si tiene menos de 2, se agrega lo que haya
 
-    len2 = len(list_two)
-    if len2 == 2:
-        list_two_new = [list_two[1]]
-    elif len2 == 3:
-        list_two_new = [list_two[1], list_two[2]]
-    elif len2 >= 4:
-        list_two_new = [list_two[1], list_two[2], list_two[3]]
-    else: 
-        list_three_new = []
-    return (list_of_lists_to_modify) # Remove this line and implement
+    # Segunda sublista: elementos del segundo al cuarto (índices 1 al 3)
+    if len(lists[1]) >= 4:
+        result.append(lists[1][1:4])
+    else:
+        result.append(lists[1][1:])  # Si no tiene 4 elementos, hasta donde alcance
+
+    # Tercera sublista: últimos dos elementos
+    if len(lists[2]) >= 2:
+        result.append(lists[2][-2:])
+    else:
+        result.append(lists[2])  # Si tiene menos de 2, se agrega lo que haya
+
+    return result
